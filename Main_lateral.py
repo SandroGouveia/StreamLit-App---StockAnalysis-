@@ -73,7 +73,7 @@ def PlotData(conteiner, data, OHLC):
 
         dados = data[OHLC]
         # st.line_chart(dados)
-        fig = plt.figure(figsize=[8, 2])
+        fig = plt.figure(figsize=[10, 4])
         ax = fig.add_subplot()
         ax.grid()
         ax.plot(dados, c='b', lw=1, label=OHLC)#========================================================================
@@ -86,28 +86,17 @@ def PlotData(conteiner, data, OHLC):
         st.text('Exploratory Data Analysis - Must be improved')
 
         st.text('First discrete difference')
-        diff_o = data['Open'].diff(1)
-        diff_h = data['High'].diff(1)
-        diff_l = data['Low'].diff(1)
-        diff_c = data['Close'].diff(1)
+        _o = data['Open'].diff(1)
+        _h = data['High'].diff(1)
+        _l = data['Low'].diff(1)
+        _c = data['Close'].diff(1)
 
         fig = plt.figure(figsize=[10, 5])
-        ax1 = fig.add_subplot(2, 2, 1)
-        ax1.set_title('Open')
-        ax1.hist(diff_o, 30, density=1, color='green', alpha=0.7, ec='k')
-
-        ax1 = fig.add_subplot(2, 2, 2)
-        ax1.set_title('High')
-        ax1.hist(diff_h, 30, density=1, color='green', alpha=0.7, ec='k')
-
-        ax1 = fig.add_subplot(2, 2, 3)
-        ax1.set_title('Low')
-        ax1.hist(diff_l, 30, density=1, color='green', alpha=0.7, ec='k')
-
-        ax1 = fig.add_subplot(2, 2, 4)
-        ax1.set_title('Close')
-        ax1.hist(diff_c, 30, density=1, color='green', alpha=0.7, ec='k')
-
+        for ct, (i, j) in enumerate(zip(['Open', 'High', 'Low', 'Close'], [_o, _h, _l, _c])):
+            ax1 = fig.add_subplot(2, 2, ct+1)
+            ax1.set_title(i)
+            ax1.grid()
+            ax1.hist(j, 50, density=1, color='green', alpha=0.7, ec='k')
         fig.tight_layout()
         st.pyplot(fig=fig)
 
@@ -124,7 +113,7 @@ ctEDA = st.container()
 with st.sidebar:
     About(ctAbout)
     st.title('Stock')
-    stock = st.selectbox('Choose a Stock', ('AAPL', 'GOOG', 'AMZN', 'MSFT', 'TSLA', 'NVDA', 'JPM', 'USER*'))
+    stock = st.selectbox('Stock:', ('AAPL', 'GOOG', 'AMZN', 'MSFT', 'TSLA', 'NVDA', 'JPM', 'USER*'))
     if stock == 'USER*':
         stock = st.text_input('Define a stock', 'AAPL')
 
@@ -141,9 +130,9 @@ with st.sidebar:
 
     st.title('Define your Indicator')
     indicador1 = st.selectbox('Select the Indicator #1', ('SMA', 'EMA', 'DEMA'))
-    per1 = st.slider("Please enter periodo ind#1", 2, 150, 1)
+    per1 = st.slider("Please enter ind#1 periods", 2, 150, 1)
     indicador2 = st.selectbox('Select the Indicator #2', ('SMA', 'EMA', 'DEMA'))
-    per2 = st.slider("Please enter periodo ind#2", 2, 150, 1)
+    per2 = st.slider("Please enter ind#2 periods", 2, 150, 1)
 
     # st.title('Forecast')
     # n_ahead = st.slider("Please, select the days ahead", 2, 500, 1)
@@ -172,19 +161,19 @@ with ctAppStra:
 
     idx_ent, entrada = fun_strategy1(data[OHLC], data_ind1, data_ind2)
 
-    fig = plt.figure(figsize=[8, 3])
+    fig = plt.figure(figsize=[10, 5])
     ax = fig.add_subplot()
     ax.grid()
     ax.plot(data[OHLC], c='b', lw=1, label='data')#===================================================================
-    ax.scatter(idx_ent, entrada, marker='^', c='g', label='entry')
+    ax.scatter(idx_ent, entrada, marker='^', c='g', label='entry', s=25)
     ax.plot(data_ind1, ls='-', c='r', lw=0.75, label='Ind#1')#========================================================
     ax.plot(data_ind2, ls='-', c='g', lw=0.75, label='Ind#2')#========================================================
     ax.tick_params(axis='x', labelrotation=45)
     ax.legend(loc='best')
     fig.tight_layout()
     st.pyplot(fig=fig)
-#
-#
+
+
 #     # st.title('Time-Series Forecast')
 #     # st.text('Forecast your stock using ARIMA approach - Must be improved')
 #     # treino = data[OHLC]
