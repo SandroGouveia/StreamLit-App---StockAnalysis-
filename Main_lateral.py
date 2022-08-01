@@ -145,11 +145,11 @@ with st.sidebar:
     data = get_data(stock, start_date, end_date)
 
 
-    # st.title('Define your Indicator')
-    # indicador1 = st.selectbox('Select the Indicator #1', ('SMA', 'EMA', 'DEMA'))
-    # per1 = st.slider("Please enter periodo ind#1", 2, 150, 1)
-    # indicador2 = st.selectbox('Select the Indicator #2', ('SMA', 'EMA', 'DEMA'))
-    # per2 = st.slider("Please enter periodo ind#2", 2, 150, 1)
+    st.title('Define your Indicator')
+    indicador1 = st.selectbox('Select the Indicator #1', ('SMA', 'EMA', 'DEMA'))
+    per1 = st.slider("Please enter periodo ind#1", 2, 150, 1)
+    indicador2 = st.selectbox('Select the Indicator #2', ('SMA', 'EMA', 'DEMA'))
+    per2 = st.slider("Please enter periodo ind#2", 2, 150, 1)
 
     # st.title('Forecast')
     # n_ahead = st.slider("Please, select the days ahead", 2, 500, 1)
