@@ -27,7 +27,7 @@ def fun_strategy1(data, ind1, ind2):
 
 def About(conteiner):
     with conteiner:
-        st.title('App Trade Stategy')
+        st.title('App Trading Strategy')
         st.text('by Sandro Marcos de Gouveia')
         st.text('- - - - - - - - - - - - - - - - - ')
         st.text('In order to understand how these indicators works, please check the following link:\n'
@@ -122,11 +122,12 @@ with st.sidebar:
 
     start_date = st.date_input('Start date', tomorrow)
     end_date = st.date_input('End date', today)
+    st.text('-------------------------------------------------------')
 
     st.title('Plot your Stock')
     OHLC = st.selectbox('Select Open, High, Low or Close', ('Open', 'High', 'Low', 'Close'))
     data = get_data(stock, start_date, end_date)
-
+    st.text('-------------------------------------------------------')
 
     st.title('Define your Indicator')
     indicador1 = st.selectbox('Select the Indicator #1', ('SMA', 'EMA', 'DEMA'))
@@ -164,10 +165,10 @@ with ctAppStra:
     fig = plt.figure(figsize=[10, 5])
     ax = fig.add_subplot()
     ax.grid()
-    ax.plot(data[OHLC], c='b', lw=1, label='data')#===================================================================
+    ax.plot(data[OHLC], c='b', lw=1, label='data', zorder=50)#===================================================================
     ax.scatter(idx_ent, entrada, marker='^', c='g', label='entry', s=25)
-    ax.plot(data_ind1, ls='-', c='r', lw=0.75, label='Ind#1')#========================================================
-    ax.plot(data_ind2, ls='-', c='g', lw=0.75, label='Ind#2')#========================================================
+    ax.plot(data_ind1, ls='-', c='r', lw=0.75, label='Ind#1', zorder=2)#========================================================
+    ax.plot(data_ind2, ls='-', c='g', lw=0.75, label='Ind#2', zorder=1)#========================================================
     ax.tick_params(axis='x', labelrotation=45)
     ax.legend(loc='best')
     fig.tight_layout()
