@@ -82,41 +82,35 @@ def PlotData(conteiner, data, OHLC):
         fig.tight_layout()
         st.pyplot(fig=fig)
 
-        # st.title('EDA')
-        # st.text('Exploratory Data Analysis - Must be improved')
-        #
-        # st.text('First discrete difference')
-        # diff_o = data['Open'].diff(1)
-        # diff_h = data['High'].diff(1)
-        # diff_l = data['Low'].diff(1)
-        # diff_c = data['Close'].diff(1)
-        #
-        # fig = plt.figure(figsize=[10, 5])
-        # ax1 = fig.add_subplot(2, 2, 1)
-        # ax1.set_title('Open')
-        # ax1.hist(diff_o, 30, density=1, color='green', alpha=0.7, ec='k')
-        #
-        # ax1 = fig.add_subplot(2, 2, 2)
-        # ax1.set_title('High')
-        # ax1.hist(diff_h, 30, density=1, color='green', alpha=0.7, ec='k')
-        #
-        # ax1 = fig.add_subplot(2, 2, 3)
-        # ax1.set_title('Low')
-        # ax1.hist(diff_l, 30, density=1, color='green', alpha=0.7, ec='k')
-        #
-        # ax1 = fig.add_subplot(2, 2, 4)
-        # ax1.set_title('Close')
-        # ax1.hist(diff_c, 30, density=1, color='green', alpha=0.7, ec='k')
-        #
-        # fig.tight_layout()
-        # st.pyplot(fig=fig)
+        st.title('EDA')
+        st.text('Exploratory Data Analysis - Must be improved')
 
-        # fig = plt.figure(figsize=[8, 2])
-        # ax = fig.add_subplot()
-        # data2 = data.drop('Volume', axis='columns')
-        # sns.heatmap(data2.corr(), cmap='Blues', annot=True, ax=ax)
-        # fig.tight_layout()
-        # st.pyplot(fig=fig)
+        st.text('First discrete difference')
+        diff_o = data['Open'].diff(1)
+        diff_h = data['High'].diff(1)
+        diff_l = data['Low'].diff(1)
+        diff_c = data['Close'].diff(1)
+
+        fig = plt.figure(figsize=[10, 5])
+        ax1 = fig.add_subplot(2, 2, 1)
+        ax1.set_title('Open')
+        ax1.hist(diff_o, 30, density=1, color='green', alpha=0.7, ec='k')
+
+        ax1 = fig.add_subplot(2, 2, 2)
+        ax1.set_title('High')
+        ax1.hist(diff_h, 30, density=1, color='green', alpha=0.7, ec='k')
+
+        ax1 = fig.add_subplot(2, 2, 3)
+        ax1.set_title('Low')
+        ax1.hist(diff_l, 30, density=1, color='green', alpha=0.7, ec='k')
+
+        ax1 = fig.add_subplot(2, 2, 4)
+        ax1.set_title('Close')
+        ax1.hist(diff_c, 30, density=1, color='green', alpha=0.7, ec='k')
+
+        fig.tight_layout()
+        st.pyplot(fig=fig)
+
 
 #===Defyning the 'conteiner' in streamlit way...
 ctAbout = st.container()
