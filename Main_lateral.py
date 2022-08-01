@@ -161,34 +161,34 @@ with ctAppStra:
     st.title('Test your Strategy')
     st.text('The strategy: When the indicator#1 is above the indicator#2,\nit is an entry sign represented by the green triangule(^)')
     data = data
-#
-#     if indicador1 == 'SMA':
-#         data_ind1 = TA.SMA(data, per1)
-#     elif indicador1 == 'EMA':
-#         data_ind1 = TA.EMA(data, per1)
-#     else:
-#         data_ind1 = TA.DEMA(data, per1)
-#
-#     if indicador1 == 'SMA':
-#         data_ind2 = TA.SMA(data, per2)
-#     elif indicador2 == 'EMA':
-#         data_ind2 = TA.EMA(data, per2)
-#     else:
-#         data_ind2 = TA.DEMA(data, per2)
-#
-#     idx_ent, entrada = fun_strategy1(data[OHLC], data_ind1, data_ind2)
-#
-#     # fig = plt.figure(figsize=[8, 3])
-#     # ax = fig.add_subplot()
-#     # ax.grid()
-#     # ax.plot(data[OHLC], c='b', lw=1, label='data')#===================================================================
-#     # ax.scatter(idx_ent, entrada, marker='^', c='g', label='entry')
-#     # ax.plot(data_ind1, ls='-', c='r', lw=0.75, label='Ind#1')#========================================================
-#     # ax.plot(data_ind2, ls='-', c='g', lw=0.75, label='Ind#2')#========================================================
-#     # ax.tick_params(axis='x', labelrotation=45)
-#     # ax.legend(loc='best')
-#     # fig.tight_layout()
-#     # st.pyplot(fig=fig)
+
+    if indicador1 == 'SMA':
+        data_ind1 = TA.SMA(data, per1)
+    elif indicador1 == 'EMA':
+        data_ind1 = TA.EMA(data, per1)
+    else:
+        data_ind1 = TA.DEMA(data, per1)
+
+    if indicador1 == 'SMA':
+        data_ind2 = TA.SMA(data, per2)
+    elif indicador2 == 'EMA':
+        data_ind2 = TA.EMA(data, per2)
+    else:
+        data_ind2 = TA.DEMA(data, per2)
+
+    idx_ent, entrada = fun_strategy1(data[OHLC], data_ind1, data_ind2)
+
+    fig = plt.figure(figsize=[8, 3])
+    ax = fig.add_subplot()
+    ax.grid()
+    ax.plot(data[OHLC], c='b', lw=1, label='data')#===================================================================
+    ax.scatter(idx_ent, entrada, marker='^', c='g', label='entry')
+    ax.plot(data_ind1, ls='-', c='r', lw=0.75, label='Ind#1')#========================================================
+    ax.plot(data_ind2, ls='-', c='g', lw=0.75, label='Ind#2')#========================================================
+    ax.tick_params(axis='x', labelrotation=45)
+    ax.legend(loc='best')
+    fig.tight_layout()
+    st.pyplot(fig=fig)
 #
 #
 #     # st.title('Time-Series Forecast')
