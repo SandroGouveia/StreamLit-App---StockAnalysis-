@@ -7,7 +7,7 @@ import yfinance as yf
 from finta import TA
 from streamlit_option_menu import option_menu
 import datetime
-import pmdarima as pm
+# import pmdarima as pm
 
 @st.cache
 def get_data(stock, date1, date2):
@@ -187,25 +187,25 @@ with ctAppStra:
     st.pyplot(fig=fig)
 
 
-    st.title('Time-Series Forecast')
-    st.text('Forecast your stock using ARIMA approach - Must be improved')
-    treino = data[OHLC]
-    modl = pm.auto_arima(treino, start_p=1, start_q=1, start_P=1, start_Q=1,
-                         max_p=5, max_q=10, max_P=10, max_Q=10, seasonal=True,
-                         stepwise=True, suppress_warnings=True, D=20, max_D=20,
-                         error_action='ignore')
-
-    preds, conf_int = modl.predict(n_periods=n_ahead, return_conf_int=True)
-
-    fig = plt.figure(figsize=[8, 2])
-    ax = fig.add_subplot()
-    ax.grid()
-    ax.plot(treino, alpha=0.75, c='b', label='Real')
-    ax.plot(data_afrente, preds, alpha=0.75, c='r', label='Predict')
-    plt.fill_between(data_afrente, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b')
-    ax.legend(loc='best')
-    fig.tight_layout()
-    st.pyplot(fig=fig)
+    # st.title('Time-Series Forecast')
+    # st.text('Forecast your stock using ARIMA approach - Must be improved')
+    # treino = data[OHLC]
+    # modl = pm.auto_arima(treino, start_p=1, start_q=1, start_P=1, start_Q=1,
+    #                      max_p=5, max_q=10, max_P=10, max_Q=10, seasonal=True,
+    #                      stepwise=True, suppress_warnings=True, D=20, max_D=20,
+    #                      error_action='ignore')
+    #
+    # preds, conf_int = modl.predict(n_periods=n_ahead, return_conf_int=True)
+    #
+    # fig = plt.figure(figsize=[8, 2])
+    # ax = fig.add_subplot()
+    # ax.grid()
+    # ax.plot(treino, alpha=0.75, c='b', label='Real')
+    # ax.plot(data_afrente, preds, alpha=0.75, c='r', label='Predict')
+    # plt.fill_between(data_afrente, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b')
+    # ax.legend(loc='best')
+    # fig.tight_layout()
+    # st.pyplot(fig=fig)
 
 
 

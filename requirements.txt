@@ -1,5 +1,4 @@
 finta==1.1
-pmdarima==1.7.1
 numpy==1.19.2
 yfinance==0.1.63
 streamlit_option_menu==0.3.2
