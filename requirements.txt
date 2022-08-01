@@ -1,7 +1,7 @@
-finta==1.1
-numpy==1.19.2
-yfinance==0.1.63
-streamlit_option_menu==0.3.2
-streamlit==1.11.0
-pandas==1.2.1
-matplotlib==3.2.2
+finta
+numpy
+yfinance
+streamlit_option_menu
+streamlit
+pandas
+matplotlib
