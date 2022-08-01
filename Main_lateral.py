@@ -156,11 +156,11 @@ with st.sidebar:
     # ahead = today + datetime.timedelta(days=n_ahead-1)
     # data_afrente = pd.date_range(today, ahead, freq='d')
 
-# with ctAppStra:
-#     PlotData(ctPlot, data, OHLC)
-#     st.title('Test your Strategy')
-#     st.text('The strategy: When the indicator#1 is above the indicator#2,\nit is an entry sign represented by the green triangule(^)')
-#     data = data
+with ctAppStra:
+    PlotData(ctPlot, data, OHLC)
+    st.title('Test your Strategy')
+    st.text('The strategy: When the indicator#1 is above the indicator#2,\nit is an entry sign represented by the green triangule(^)')
+    data = data
 #
 #     if indicador1 == 'SMA':
 #         data_ind1 = TA.SMA(data, per1)
